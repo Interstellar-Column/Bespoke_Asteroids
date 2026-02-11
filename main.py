@@ -27,6 +27,7 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     while True:
         log_state()
+        screen.fill("black")
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
@@ -36,7 +37,11 @@ def main():
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
-        screen.fill("black")
+            for shot in shots:
+                if asteroid.collides_with(shot):
+                    log_event("asteroid_shot")
+                    shot.kill()
+                    asteroid.kill()
         for obj in drawable:
             obj.draw(screen)
         pygame.display.flip()
