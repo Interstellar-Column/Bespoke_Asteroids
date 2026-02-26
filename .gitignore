@@ -10,3 +10,6 @@ game_events.jsonl
 
 # Virtual environments
 .venv
+
+# Game-generated files
+highscore.txt
